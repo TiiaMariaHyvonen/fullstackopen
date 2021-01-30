@@ -1,13 +1,27 @@
 import React, { useState } from 'react'
 import ReactDOM from 'react-dom'
 
+const StatisticLine = ({text, value}) => {
+  return (
+    <div>{text} {value}</div>
+  )
+}
+
 const Statistics = ({good, neutral, bad}) => {
+  let all = good + neutral + bad
+  let ave = good + (-1)*bad
+  
+  if (all === 0) {
+    return ( <div>No feedback given</div> )
+  }
   return (
     <div>
-      <h1>Statistics</h1>
-      <div>good {good}</div>
-      <div>neutral {neutral}</div>
-      <div>bad {bad}</div>
+      <StatisticLine text='good' value={good}/>
+      <StatisticLine text='neutral' value={neutral}/>
+      <StatisticLine text='bad' value={bad}/>
+      <StatisticLine text='all' value={all}/>
+      <StatisticLine text='average' value={ave/all}/>
+      <StatisticLine text='positive' value={good/all}/>
     </div>
   )
 }
@@ -36,6 +50,7 @@ const App = () => {
       <Button text='good' handleClick={handleGood}/>
       <Button text='neutral' handleClick={handleNeutral}/>
       <Button text='bad' handleClick={handleBad}/>
+      <h1>Statistics</h1>
       <Statistics good={good} neutral={neutral} bad={bad}/>
     </div>
 
