@@ -1,27 +1,44 @@
 import React, { useState } from 'react'
 import ReactDOM from 'react-dom'
 
+
 const StatisticLine = ({text, value}) => {
+  if (text === 'positive') {
+    return (
+      <tr>
+      <td>{text}</td>
+      <td>{value} %</td>
+      </tr>
+    )
+  }
   return (
-    <div>{text} {value}</div>
+    <tr>
+    <td>{text}</td>
+    <td>{value}</td>
+    </tr>
   )
 }
 
 const Statistics = ({good, neutral, bad}) => {
   let all = good + neutral + bad
   let ave = good + (-1)*bad
+  let pos = good/all*100
   
   if (all === 0) {
     return ( <div>No feedback given</div> )
   }
   return (
     <div>
-      <StatisticLine text='good' value={good}/>
-      <StatisticLine text='neutral' value={neutral}/>
-      <StatisticLine text='bad' value={bad}/>
-      <StatisticLine text='all' value={all}/>
-      <StatisticLine text='average' value={ave/all}/>
-      <StatisticLine text='positive' value={good/all}/>
+      <table>
+        <tbody>
+        <StatisticLine text='good' value={good}/>
+        <StatisticLine text='neutral' value={neutral}/>
+        <StatisticLine text='bad' value={bad}/>
+        <StatisticLine text='all' value={all}/>
+        <StatisticLine text='average' value={ave/all}/>
+        <StatisticLine text='positive' value={pos}/>
+        </tbody>
+    </table>
     </div>
   )
 }
