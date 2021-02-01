@@ -5,7 +5,6 @@ const Total = ({parts}) => {
     const reducer = (accumulator, currentValue) => accumulator + currentValue
     const points = parts.map(part => part.exercises)
 
-    console.log('moi')
 
     return(
       <div>

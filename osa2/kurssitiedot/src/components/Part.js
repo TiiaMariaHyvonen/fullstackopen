@@ -1,10 +1,10 @@
 import React from 'react'
 
-const Part = (props) => {
+const Part = ({content, exercises}) => {
     return(
       <div>
         <p>
-          {props.content} {props.exercises}
+          {content} {exercises}
         </p>
       </div>
     )
