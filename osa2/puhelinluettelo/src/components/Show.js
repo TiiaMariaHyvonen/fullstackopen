@@ -4,7 +4,7 @@ const Show = ({people}) => {
 
     return (
     <ul>
-        {people.map(person => <div key={person.name}> {person.name} {person.number}</div>)}
+        {people.map(person => <div key={person.id}> {person.name} {person.number}</div>)}
     </ul>
     )
 
